@@ -1,0 +1,56 @@
+{
+  "name": "github-ratings",
+  "version": "0.0.1",
+  "description": "A JavaScript module for both NodeJS and the Browser, which can be used to obtain various information about users and repositories.",
+  "scripts": {
+    "expose:cmd": "mv -v dist/* ./",
+    "build:dev": "webpack --mode=development --watch --progress",
+    "build:prod": "webpack --mode=production",
+    "prepublishOnly": "webpack --mode=production && npm run expose:cmd",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\"",
+    "lint:fix": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeorgianStan/github-ratings.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GeorgianStan/github-ratings/issues",
+    "email": "georgian.stan8@gmail.com"
+  },
+  "homepage": "https://github.com/GeorgianStan/github-ratings#readme",
+  "keywords": [
+    "github",
+    "github stats",
+    "github stars",
+    "github profile",
+    "github ratings"
+  ],
+  "author": "Stan Georgian",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@types/node": "^15.12.4",
+    "@typescript-eslint/eslint-plugin": "^4.28.0",
+    "@typescript-eslint/parser": "^4.28.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "jest": "^27.0.5",
+    "prettier": "^2.3.2",
+    "ts-jest": "^27.0.3",
+    "ts-loader": "^9.2.3",
+    "typescript": "^4.3.4",
+    "webpack": "^5.40.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "workbench.colorCustomizations": {
+      "activityBar.activeBackground": "#ee55c5",
+      "activityBar.activeBorder": "#b0e817",
+      "activityBar.background": "#ee55c5",
+      "activityBar.foreground": "#15202b",
+      "activityBar.inactiveForeground": "#15202b99",
+      "activityBarBadge.background": "#b0e817",
+      "activityBarBadge.foreground": "#15202b",
+      "statusBar.background": "#e927b5",
+      "statusBar.foreground": "#e7e7e7",
+      "statusBarItem.hoverBackground": "#ee55c5",
+      "titleBar.activeBackground": "#e927b5",
+      "titleBar.activeForeground": "#e7e7e7",
+      "titleBar.inactiveBackground": "#e927b599",
+      "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.color": "#e927b5"
+  },
+  "extensions": {
+    "recommendations": [
+      "aaron-bond.better-comments",
+      "coenraads.bracket-pair-colorizer",
+      "johnpapa.vscode-peacock",
+      "ritwickdey.liveserver"
+    ]
+  }
+}
