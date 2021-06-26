@@ -1,4 +1,4 @@
-name: NPM Deploy
+name: CD - NPM Deploy
 
 on:
   push:

@@ -41,6 +41,7 @@ It should :
   - test : tests and CI updates
   - chore : updates for toolchain(webpack rules, update/upgrade dependencies and so on)
   - release : a new release
+  - pipeline : updates for github workflows
 
 _example_: **git commit -m "feat,test: functionality to do X was implemented and tested"**
 
