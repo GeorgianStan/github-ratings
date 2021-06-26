@@ -1,6 +1,6 @@
 {
   "name": "github-ratings",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A JavaScript module for both NodeJS and the Browser, which can be used to obtain various information about users and repositories.",
   "scripts": {
     "expose:cmd": "mv -v dist/* ./",
