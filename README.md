@@ -57,7 +57,7 @@ const GithubRatings = require('github-ratings/browser');
 
 The library is a default export.
 
-For `NodeJS` environment, just replace `browser` with `node`
+For `NodeJS` environment, just replace `browser` with `node`.
 
 ```ts
 import GithubRatings from 'github-ratings/node';
