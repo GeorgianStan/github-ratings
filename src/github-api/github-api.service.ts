@@ -9,17 +9,8 @@ class GithubAPI {
   /* eslint-disable */
   #fetch: any;
 
-  constructor(fetch: any) {
-    this.#fetch = fetch;
-  }
-  /**
-   * * Public methods
-   */
-  async fetchUser(
-    username: string,
-  ): Promise<PartialRecord<UserFieldFromAPI, number | string>> {
-    const url = `${this.#apiURL}/users/${username}`;
-
+  // * General method to be used to handle API requests
+  #apiFetcher = async (url: string): Promise<any> => {
     const res: Response = await this.#fetch(url);
 
     if (res.status === 404) {
@@ -31,10 +22,50 @@ class GithubAPI {
     }
 
     return res.json();
+  };
+
+  constructor(fetch: any) {
+    this.#fetch = fetch;
+  }
+  /**
+   * * Public methods
+   */
+  async fetchUser(
+    username: string,
+  ): Promise<PartialRecord<UserFieldFromAPI, number | string>> {
+    const url = `${this.#apiURL}/users/${username}`;
+
+    return this.#apiFetcher(url);
+  }
+
+  async fetchUserEvents(username: string): Promise<any[]> {
+    let events = [];
+
+    let currentPage = 1;
+    const perPageCount = 100;
+
+    while (true) {
+      const url = `${
+        this.#apiURL
+      }/users/${username}/events?page=${currentPage}&per_page=${perPageCount}`;
+
+      const paginatedRepos = await this.#apiFetcher(url);
+
+      events.push(...paginatedRepos);
+
+      // ? if all events were fetched
+      if (paginatedRepos.length < perPageCount) {
+        break;
+      }
+
+      // ? fetch next events
+      currentPage++;
+    }
+
+    return events;
   }
 
   async fetchUserRepos(username: string): Promise<any[]> {
-    // ? get all the repos
     let repos = [];
 
     let currentPage = 1;
@@ -45,17 +76,7 @@ class GithubAPI {
         this.#apiURL
       }/users/${username}/repos?page=${currentPage}&per_page=${perPageCount}`;
 
-      const res: Response = await this.#fetch(url);
-
-      if (res.status === 404) {
-        throw new Error('User not found');
-      }
-
-      if (res.status !== 200) {
-        throw new Error((await res.json()).message);
-      }
-
-      const paginatedRepos = await res.json();
+      const paginatedRepos = await this.#apiFetcher(url);
 
       repos.push(...paginatedRepos);
 
@@ -71,9 +92,7 @@ class GithubAPI {
     return repos;
   }
 
-  async fetchUserStars(
-    username: string,
-  ): Promise<PartialRecord<UserField, number | string>> {
+  async fetchUserStars(username: string): Promise<{ stars: number }> {
     const repos = await this.fetchUserRepos(username);
 
     const stars: number = repos.reduce(
