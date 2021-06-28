@@ -9,7 +9,7 @@
     <a href="https://david-dm.org/georgianstan/github-ratings" title="dependencies status"><img src="https://status.david-dm.org/gh/georgianstan/github-ratings.svg"/></a>
 </div>
 
-`github-ratings` is a module for both NodeJS and the Browser, which can be used to obtain various information about users and repositories.
+`github-ratings` is a module for both NodeJS and the Browser, which can be used to obtain various **public** information about users and repositories.
 
 ## Installation
 
@@ -102,6 +102,10 @@ const res = await GithubRatings.fetchUserInfo('GeorgianStan', [
 
 // res = { created_at: "2017-02-15T14:54:15Z", public_repos: 37, stars: 50}
 ```
+
+## Rate limit
+
+The library uses the public Github API to collect these statistics. It is therefore subject to the rate limit imposed by API, which is currently at [60 requests per hour](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting) for unauthenticated requests.
 
 ## Stay in touch
 
